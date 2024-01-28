@@ -1,8 +1,7 @@
-from utils import db_connect
-engine = db_connect()
+import subprocess
 
-# your code here
-import pandas as pd
-
-total_data = pd.read_csv("https://raw.githubusercontent.com/4GeeksAcademy/data-preprocessing-project-tutorial/main/AB_NYC_2019.csv")
-total_data.head()
+try:
+    result = subprocess.run(["dot", "-V"], capture_output=True, text=True, check=True)
+    print(result.stdout)
+except subprocess.CalledProcessError as e:
+    print(f"Error: {e}")
